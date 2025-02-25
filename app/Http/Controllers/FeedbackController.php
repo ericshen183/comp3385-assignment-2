@@ -19,7 +19,8 @@ class FeedbackController extends Controller
         ]);
 
         try {
-            Mail::to('007e9b4317-fd23ab@inbox.mailtrap.io')->send(new Feedback($request->name, $request->email, $request->comments));
+            Mail::to('comp3385@uwi.edu', 'COMP3385 Course Admin')
+                ->send(new Feedback($validatedData['name'], $validatedData['email'], $validatedData['comments']));
         } catch (\Exception $e) {
             return back()->withErrors(['email' => 'Failed to send email: ' . $e->getMessage()]);
         }

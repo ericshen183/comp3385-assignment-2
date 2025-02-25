@@ -46,6 +46,10 @@ class Feedback extends Mailable
     {
         return new Content(
             view: 'mail.feedback',
+            with: [
+                'name' => $this->name,
+                'comments' => $this->comments,
+            ],
         );
     }
 
